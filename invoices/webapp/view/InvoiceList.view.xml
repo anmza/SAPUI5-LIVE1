@@ -1,0 +1,53 @@
+<mvc:View
+    controllerName="invoices.controller.InvoiceList"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+>
+    <List
+        headerText="{i18n>headerList}"
+        items="{northwind>/Invoices}"
+        width="auto"
+        class="sapUiResponsiveMargin"
+        id="invoicesList"
+    >
+        <headerToolbar>
+            <Toolbar>
+                <Title text="{i18n>headerList}" />
+                <ToolbarSpacer />
+                <SearchField
+                    width="40%"
+                    liveChange="onFilter"
+                />
+            </Toolbar>
+        </headerToolbar>
+        <items>
+            <ObjectListItem
+                title="{northwind>ProductName}"
+                number="{parts:[
+                    {path: 'northwind>ExtendedPrice'},
+                    {path: 'currency>/usd'}
+                    ],
+                    type:'sap.ui.model.type.Currency',
+                    formatOptions:{
+                        showMeasure: false,
+                        style: 'short',
+                        roudingMode: 'TOWARDS:ZERO'
+                    }}"
+                numberUnit="{currency>/eur}"
+                numberState="{= ${northwind>ExtendedPrice}>100 ? 'Success':'Error'}"
+            >
+                <firstStatus>
+                <ObjectStatus text="{northwind>ShipperName}" />
+                    <!-- <ObjectStatus
+                        text="{path:'Invoices>Status',
+                            formatter:'.formater.invoicesStatus'}"
+                    /> -->
+                </firstStatus>
+
+                <secondStatus>
+                    <!-- <ObjectStatus text="{Invoices>ShipperName}" /> -->
+                </secondStatus>
+            </ObjectListItem>
+        </items>
+    </List>
+</mvc:View>

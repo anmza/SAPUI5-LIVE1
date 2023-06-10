@@ -1,0 +1,38 @@
+<c:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:c="sap.ui.core"
+    xmlns:form="sap.ui.layout.form"
+>
+<Dialog id="helloPrueba"
+        contentWidth="50%"
+        title="{i18n>hello} {/recipient/name}">
+<Panel
+    headerText="{i18n>headerText}"
+    width="50%"
+    class="sapUiResponsiveMargin"
+>
+    <content>
+        <form:SimpleForm editable="true">
+            <Label
+                text="{i18n>lblPrub}"
+                textAlign="Center"
+            />
+            <Input ></Input>
+            <Label text="{i18n>lblPrub}"></Label>
+            <Input ></Input>
+            <Label text="{i18n>lblPrub}"></Label>
+            <Input ></Input>
+            <Label ></Label>
+            <Button
+                text="{i18n>dialogCloseButton}"
+                press="onClosePrueba"
+            />
+                
+        
+        
+        </form:SimpleForm>
+    </content>
+
+</Panel>
+</Dialog>
+</c:FragmentDefinition>
